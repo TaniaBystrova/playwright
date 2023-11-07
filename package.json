@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"commonjs",
+  "type": "commonjs",
   "scripts": {
     "test": "npx playwright test --project=chromium",
     "test:ui": "npx playwright test --ui",
     "report": "npx playwright show-report"
-    
   },
   "repository": {
     "type": "git",
@@ -22,6 +21,7 @@
   },
   "homepage": "https://github.com/TaniaBystrova/playwright#readme",
   "devDependencies": {
+    "@faker-js/faker": "^8.2.0",
     "@playwright/test": "^1.39.0",
     "@types/node": "^20.8.10"
   }

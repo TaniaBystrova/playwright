@@ -27,15 +27,19 @@ module.exports = defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    headless: false,
     httpCredentials: {
     username:'guest',
     password: 'welcome2qauto'
     },
     /* Base URL to use in actions like `await page.goto('/')`. */
-     baseURL: ' https://qauto.forstudy.space/',
+     baseURL: 'https://qauto.forstudy.space/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    launchOptions: {
+      slowMo: 1000
+    }
   },
 
   /* Configure projects for major browsers */
