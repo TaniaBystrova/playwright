@@ -4,7 +4,7 @@ const { default: WelcomePage } = require('../../src/pageObjects/welcomePage/Welc
 const { default: Registration } = require('../../src/pageObjects/components/RegistrationPopup');
 const userEmail = faker.internet.email()
 
-test.describe('Login page', () => {
+test.describe('Login page @regression', () => {
 let registration
 let welcomePage
 let page

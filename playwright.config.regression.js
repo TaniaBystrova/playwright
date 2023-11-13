@@ -1,7 +1,6 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
-import dotenv from 'dotenv'
-import { config as testConfig} from './config/config.js'
+import { config } from './config/config.js'
 
 /**
  * Read environment variables from file.
@@ -12,9 +11,8 @@ import { config as testConfig} from './config/config.js'
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-dotenv.config()
 
-const config = defineConfig({
+module.exports = defineConfig({
   testDir: './tests',
   testMatch: 'tests/**/*.spec.js',
   timeout: 360_000,
@@ -33,9 +31,9 @@ const config = defineConfig({
 
   use: {
     headless: false,
-    httpCredentials: testConfig.httpCredentials,
+    httpCredentials: config.httpCredentials,
     /* Base URL to use in actions like `await page.goto('/')`. */
-     baseURL: testConfig.baseURL,
+     baseURL: config.baseURL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -49,7 +47,8 @@ const config = defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    }
+    },
+
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
@@ -78,6 +77,4 @@ const config = defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
-export default config
 
