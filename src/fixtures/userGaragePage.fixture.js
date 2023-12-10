@@ -3,6 +3,7 @@ import ProfilePage from "../pageObjects/profilePage/ProfilePage.js";
 //import WelcomePage from "../pageObjects/welcomePage/WelcomePage.js";
 import {USERS} from "../data/dict/users.js";
 import {STORAGE_STATE_USER_PATH} from "../data/storageState.js";
+import GaragePage from "../pageObjects/garagePage/GaragePage.js";
 
 export const test = base.extend({
     userInfo: USERS.TANIA_BYSTROVA,
@@ -17,6 +18,22 @@ export const test = base.extend({
         // before test
 
         await use(profilePage)
+        await ctx.close()
+
+        //after test
+    },
+    userGaragePage: async ({browser}, use)=>{
+        const ctx = await browser.newContext({
+            storageState: STORAGE_STATE_USER_PATH
+        })
+        const page = await ctx.newPage()
+        const garagePage = new GaragePage(page)
+        await garagePage.navigate()
+
+        // before test
+
+        await use(garagePage)
+        await ctx.close()
 
         //after test
     },
