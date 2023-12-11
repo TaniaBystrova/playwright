@@ -1,4 +1,4 @@
-import {test as base} from "@playwright/test"
+import {test as base, request} from "@playwright/test"
 import ProfilePage from "../pageObjects/profilePage/ProfilePage.js";
 //import WelcomePage from "../pageObjects/welcomePage/WelcomePage.js";
 import {USERS} from "../data/dict/users.js";
@@ -18,7 +18,7 @@ export const test = base.extend({
         // before test
 
         await use(profilePage)
-        await ctx.close()
+       // await ctx.close()
 
         //after test
     },
@@ -36,6 +36,14 @@ export const test = base.extend({
         await ctx.close()
 
         //after test
+    },
+    userAPIClient: async ({},use)=>{
+        const ctx = await request.newContext({
+            storageState: STORAGE_STATE_USER_PATH
+        })
+        await use(ctx)
+
+       await ctx.dispose()
     },
 }
 )

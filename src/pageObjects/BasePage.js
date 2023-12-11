@@ -1,12 +1,15 @@
 
 import BaseComponent from "./BaseComponent.js"
 const { expect } = require('@playwright/test')
+import Header from "./components/Header.js"
 
 export default class BasePage extends BaseComponent {
     constructor(page, url,  container) {
         const wrapper = container ?? page.locator('html')
         super(page, wrapper)
         this._url = url
+        this.header = new Header(page)
+        
     }
 
    async navigate(){
