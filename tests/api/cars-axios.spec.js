@@ -5,7 +5,7 @@ import {config} from "../../config/config.js";
 import {USERS} from "../../src/data/dict/users.js";
 
 
-test.describe.only("API", ()=>{
+test.describe("API", ()=>{
     let client
     test.beforeAll(async ()=>{
       client = axios.create({
